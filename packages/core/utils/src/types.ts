@@ -34,7 +34,7 @@ export interface Model {
     pluralName: string;
   };
   options: {
-    populateCreatorFields: boolean;
+    populateCreatorFields?: boolean;
     draftAndPublish: boolean;
   };
   privateAttributes?: string[];
