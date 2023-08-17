@@ -6,6 +6,13 @@ import * as yup from 'yup';
 
 import pluginPkg from '../../package.json';
 
+import CheckboxConfirmation from './components/CheckboxConfirmation';
+import CMEditViewInjectedComponents from './components/CMEditViewInjectedComponents';
+import DeleteModalAdditionalInfos from './components/CMListViewInjectedComponents/DeleteModalAdditionalInfos';
+import PublishModalAdditionalInfos from './components/CMListViewInjectedComponents/PublishModalAdditionalInfos';
+import UnpublishModalAdditionalInfos from './components/CMListViewInjectedComponents/UnpublishModalAdditionalInfos';
+import Initializer from './components/Initializer';
+import LocalePicker from './components/LocalePicker';
 import { PERMISSIONS } from './constants';
 import addColumnToTableHook from './contentManagerHooks/addColumnToTable';
 import addLocaleToCollectionTypesLinksHook from './contentManagerHooks/addLocaleToCollectionTypesLinks';
@@ -17,22 +24,6 @@ import pluginId from './pluginId';
 import { getTrad } from './utils';
 import LOCALIZED_FIELDS from './utils/localizedFields';
 import mutateCTBContentTypeSchema from './utils/mutateCTBContentTypeSchema';
-
-const CheckboxConfirmation = React.lazy(() => import('./components/CheckboxConfirmation'));
-const CMEditViewInjectedComponents = React.lazy(() =>
-  import('./components/CMEditViewInjectedComponents')
-);
-const DeleteModalAdditionalInfos = React.lazy(() =>
-  import('./components/CMListViewInjectedComponents/DeleteModalAdditionalInfos')
-);
-const PublishModalAdditionalInfos = React.lazy(() =>
-  import('./components/CMListViewInjectedComponents/PublishModalAdditionalInfos')
-);
-const UnpublishModalAdditionalInfos = React.lazy(() =>
-  import('./components/CMListViewInjectedComponents/UnpublishModalAdditionalInfos')
-);
-const Initializer = React.lazy(() => import('./components/Initializer'));
-const LocalePicker = React.lazy(() => import('./components/LocalePicker'));
 
 const name = pluginPkg.strapi.name;
 
