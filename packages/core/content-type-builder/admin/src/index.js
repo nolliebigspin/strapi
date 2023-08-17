@@ -1,3 +1,5 @@
+import * as React from 'react';
+
 import { prefixPluginTranslations } from '@strapi/helper-plugin';
 
 import pluginPkg from '../../package.json';
@@ -22,13 +24,9 @@ export default {
         defaultMessage: 'Content Types Builder',
       },
       permissions: PERMISSIONS.main,
-      async Component() {
-        const component = await import(
-          /* webpackChunkName: "content-type-builder" */ './pages/App'
-        );
-
-        return component;
-      },
+      Component: React.lazy(() =>
+        import(/* webpackChunkName: "content-type-builder" */ './pages/App')
+      ),
     });
 
     app.registerPlugin({

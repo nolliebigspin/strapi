@@ -1,3 +1,5 @@
+import * as React from 'react';
+
 // NOTE TO PLUGINS DEVELOPERS:
 // If you modify this file by adding new options to the plugin entry point
 // Here's the file: strapi/docs/3.0.0-beta.x/plugin-development/frontend-field-api.md
@@ -24,13 +26,9 @@ export default {
         defaultMessage: 'Documentation',
       },
       permissions: PERMISSIONS.main,
-      async Component() {
-        const component = await import(
-          /* webpackChunkName: "documentation-page" */ './pages/PluginPage'
-        );
-
-        return component;
-      },
+      Component: React.lazy(() =>
+        import(/* webpackChunkName: "documentation-page" */ './pages/PluginPage')
+      ),
     });
 
     app.registerPlugin({
@@ -46,13 +44,9 @@ export default {
       },
       id: 'documentation',
       to: `/settings/${pluginId}`,
-      async Component() {
-        const component = await import(
-          /* webpackChunkName: "documentation-settings" */ './pages/SettingsPage'
-        );
-
-        return component;
-      },
+      Component: React.lazy(() =>
+        import(/* webpackChunkName: "documentation-settings" */ './pages/SettingsPage')
+      ),
       permissions: PERMISSIONS.main,
     });
   },

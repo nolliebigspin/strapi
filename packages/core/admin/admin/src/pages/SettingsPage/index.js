@@ -42,7 +42,13 @@ export function SettingsPage() {
    */
 
   const pluginSettingsRoutes = Object.values(settings).flatMap((section) =>
-    section.links.map((link) => createRoute(link.Component, link.to, link.exact || false))
+    section.links.map(({ Component, to, exact }) => {
+      if (Component[Symbol.toStringTag] === 'AsyncFunction') {
+        return createRoute(Component, to, exact);
+      }
+
+      return <Route key={to} path={to} component={Component} />;
+    })
   );
 
   // Since the useSettingsMenu hook can make API calls in order to check the links permissions

@@ -112,10 +112,10 @@ class StrapiApp {
       link.intlLabel?.id && link.intlLabel?.defaultMessage,
       `link.intlLabel.id & link.intlLabel.defaultMessage for ${stringifiedLink}`
     );
-    invariant(
-      link.Component && typeof link.Component === 'function',
-      `link.Component should be a valid React Component`
-    );
+    // invariant(
+    //   link.Component && typeof link.Component === 'function',
+    //   `link.Component should be a valid React Component`
+    // );
     invariant(
       link.icon && typeof link.icon === 'function',
       `link.Icon should be a valid React Component`
@@ -147,10 +147,10 @@ class StrapiApp {
       `link.intlLabel.id & link.intlLabel.defaultMessage for ${stringifiedLink}`
     );
     invariant(link.to, `link.to should be defined for ${stringifiedLink}`);
-    invariant(
-      link.Component && typeof link.Component === 'function',
-      `link.Component should be a valid React Component`
-    );
+    // invariant(
+    //   link.Component && typeof link.Component === 'function',
+    //   `link.Component should be a valid React Component`
+    // );
 
     this.settings[sectionId].links.push(link);
   };

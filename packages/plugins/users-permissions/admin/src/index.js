@@ -1,3 +1,5 @@
+import * as React from 'react';
+
 // NOTE TO PLUGINS DEVELOPERS:
 // If you modify this file by adding new options to the plugin entry point
 // Here's the file: strapi/docs/3.0.0-beta.x/plugin-development/frontend-field-api.md
@@ -32,13 +34,9 @@ export default {
           },
           id: 'roles',
           to: `/settings/users-permissions/roles`,
-          async Component() {
-            const component = await import(
-              /* webpackChunkName: "users-roles-settings-page" */ './pages/Roles'
-            );
-
-            return component;
-          },
+          Component: React.lazy(() =>
+            import(/* webpackChunkName: "users-roles-settings-page" */ './pages/Roles')
+          ),
           permissions: PERMISSIONS.accessRoles,
         },
         {
@@ -48,13 +46,9 @@ export default {
           },
           id: 'providers',
           to: `/settings/users-permissions/providers`,
-          async Component() {
-            const component = await import(
-              /* webpackChunkName: "users-providers-settings-page" */ './pages/Providers'
-            );
-
-            return component;
-          },
+          Component: React.lazy(() =>
+            import(/* webpackChunkName: "users-providers-settings-page" */ './pages/Providers')
+          ),
           permissions: PERMISSIONS.readProviders,
         },
         {
@@ -64,13 +58,9 @@ export default {
           },
           id: 'email-templates',
           to: `/settings/users-permissions/email-templates`,
-          async Component() {
-            const component = await import(
-              /* webpackChunkName: "users-email-settings-page" */ './pages/EmailTemplates'
-            );
-
-            return component;
-          },
+          Component: React.lazy(() =>
+            import(/* webpackChunkName: "users-email-settings-page" */ './pages/EmailTemplates')
+          ),
           permissions: PERMISSIONS.readEmailTemplates,
         },
         {
@@ -80,13 +70,11 @@ export default {
           },
           id: 'advanced-settings',
           to: `/settings/users-permissions/advanced-settings`,
-          async Component() {
-            const component = await import(
+          Component: React.lazy(() =>
+            import(
               /* webpackChunkName: "users-advanced-settings-page" */ './pages/AdvancedSettings'
-            );
-
-            return component;
-          },
+            )
+          ),
           permissions: PERMISSIONS.readAdvancedSettings,
         },
       ]
