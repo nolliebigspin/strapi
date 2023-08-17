@@ -2,7 +2,7 @@ import React from 'react';
 
 import get from 'lodash/get';
 
-const LocaleListCell = React.lazy(() => import('../components/LocaleListCell/LocaleListCell'));
+import LocaleListCell from '../components/LocaleListCell/LocaleListCell';
 
 const addColumnToTableHook = ({ displayedHeaders, layout }) => {
   const isFieldLocalized = get(layout, 'contentType.pluginOptions.i18n.localized', false);
