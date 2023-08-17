@@ -31,18 +31,18 @@ export function SettingsPage() {
     }
   );
 
-  /**
-   * `Component` is an async function, which is passed as property of the
-   * addSettingsLink() API during the plugin bootstrap step.
-   *
-   * Because of that we can't just render <Route component={Component} />,
-   * but have to await the function.
-   *
-   * This isn't a good React pattern and should be reconsidered.
-   */
-
   const pluginSettingsRoutes = Object.values(settings).flatMap((section) =>
     section.links.map(({ Component, to, exact }) => {
+      /**
+       * `Component` is an async function, which is passed as property of the
+       * addSettingsLink() API during the plugin bootstrap step.
+       *
+       * Because of that we can't just render <Route component={Component} />,
+       * but have to await the function.
+       *
+       * This isn't a good React pattern and should be reconsidered.
+       */
+
       if (Component[Symbol.toStringTag] === 'AsyncFunction') {
         return createRoute(Component, to, exact);
       }
